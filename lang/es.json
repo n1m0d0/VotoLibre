@@ -352,11 +352,15 @@
     "Reports": "Reportes",
     "Viewing system data": "Visualización de datos del sistema",
     "Enclosures Export": "Exportar Recintos",
-    "Supervisor assignment": "Asignación del supervisor",
-    "Supervisors assignment": "Asignación de supervisores",
-    "Manage the supervisor assignment of system": "Administrar la asignación de los supervisores del sistema",
     "Assignment": "Asignación",
     "Assignments": "Asignaciones",
+    "Delete assignment": "Eliminar asignación",
+    "Supervisor assignment": "Asignación del supervisor",
+    "Supervisors assignment": "Asignación de supervisores",
+    "Manage the supervisors assignment of system": "Administrar la asignación de los supervisores del sistema",
     "Enclosure assignment": "Asignación del recinto",
-    "Delete assignment": "Eliminar asignación"
+    "Operator assignment": "Asignación del operador",
+    "Operators assignment": "Asignación de operadores",
+    "Manage the operators assignment of system": "Administrar la asignación de los operadores del sistema",
+    "Station assignment": "Asignación de la estación"
 }

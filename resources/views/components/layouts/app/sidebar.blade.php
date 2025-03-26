@@ -61,8 +61,11 @@
 
             @role('supervisor|administrator')
                 <flux:navlist.group :heading="__('Supervision')" class="grid">
-                    <flux:navlist.item icon="briefcase" :href="route('super.supervisor-assignment')"
+                    <flux:navlist.item icon="user-group" :href="route('super.supervisor-assignment')"
                         :current="request()->routeIs('super.supervisor-assignment')" wire:navigate>{{ __('Supervisors assignment') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item icon="users" :href="route('super.operator-assignment')"
+                        :current="request()->routeIs('super.operator-assignment')" wire:navigate>{{ __('Operators assignment') }}
                     </flux:navlist.item>
                 </flux:navlist.group>
             @endrole

@@ -3,13 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Enclosure;
+use App\Models\Station;
 use App\Models\User;
 use Flux\Flux;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Usernotnull\Toast\Concerns\WireToast;
 
-class ComponentSupervisorAssignment extends Component
+class ComponentOperatorAssignment extends Component
 {
     use WireToast;
     use WithPagination;
@@ -18,37 +19,40 @@ class ComponentSupervisorAssignment extends Component
 
     public $user;
     public $enclosure;
+    public $station;
 
     public $enclosures;
+    public $stations;
 
     public function rules()
     {
         return [
-            'enclosure' => 'required|exists:enclosures,id',
+            'station' => 'required|exists:stations,id',
         ];
     }
 
     public function mount()
     {
         $this->enclosures = Enclosure::select('id', 'name')->get();
+        $this->stations = collect();
     }
 
     public function render()
     {
         $users = User::query()
             ->when($this->search, fn($query) => $query->where('name', 'like', '%' . $this->search . '%'))
-            ->role('supervisor')
+            ->role('operator')
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
-        return view('livewire.component-supervisor-assignment', compact('users'));
+        return view('livewire.component-operator-assignment', compact('users'));
     }
 
     public function save()
     {
         $this->validate();
 
-        if ($this->user->enclosures()->where('enclosure_id', $this->enclosure)->exists()) {
+        if ($this->user->stations()->where('station_id', $this->station)->exists()) {
             toast()
                 ->danger('El registro ya existe.')
                 ->push();
@@ -58,7 +62,7 @@ class ComponentSupervisorAssignment extends Component
             return;
         }
 
-        $this->user->enclosures()->attach($this->enclosure);
+        $this->user->stations()->attach($this->station);
 
         toast()
             ->success('El registro se guardó correctamente.')
@@ -76,12 +80,12 @@ class ComponentSupervisorAssignment extends Component
         Flux::modal('assignment-form')->show();
     }
 
-    public function showDelete(User $user, $enclosure)
+    public function showDelete(User $user, $station)
     {
         $this->resetForm();
 
         $this->user = $user;
-        $this->enclosure = $enclosure;
+        $this->station = $station;
 
         Flux::modal('assignment-delete')->show();
     }
@@ -93,7 +97,7 @@ class ComponentSupervisorAssignment extends Component
 
     public function delete()
     {
-        $this->user->enclosures()->detach($this->enclosure);
+        $this->user->stations()->detach($this->station);
 
         toast()
             ->danger('El registro se eliminó correctamente.')
@@ -104,11 +108,21 @@ class ComponentSupervisorAssignment extends Component
 
     public function resetForm()
     {
-        $this->reset(['user', 'enclosure']);
+        $this->reset(['user', 'enclosure', 'station']);
+        $this->stations = collect();
     }
 
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function updatedEnclosure()
+    {
+        if ($this->enclosure) {
+            $this->stations = Station::select('id', 'name')->where('enclosure_id', $this->enclosure)->get();
+        } else {
+            $this->stations = collect();
+        }
     }
 }
