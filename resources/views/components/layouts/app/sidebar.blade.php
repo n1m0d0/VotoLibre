@@ -22,6 +22,10 @@
                 <flux:navlist.item icon="home" :href="route('dashboard')"
                     :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}
                 </flux:navlist.item>
+
+                <flux:navlist.item icon="presentation-chart-line" :href="route('chart')"
+                    :current="request()->routeIs('')" wire:navigate>{{ __('Chart') }}
+                </flux:navlist.item>
             </flux:navlist.group>
 
             @role('administrator')
@@ -66,6 +70,14 @@
                     </flux:navlist.item>
                     <flux:navlist.item icon="users" :href="route('super.operator-assignment')"
                         :current="request()->routeIs('super.operator-assignment')" wire:navigate>{{ __('Operators assignment') }}
+                    </flux:navlist.item>
+                </flux:navlist.group>
+            @endrole
+
+            @role('checker|administrator')
+                <flux:navlist.group :heading="__('Control')" class="grid">
+                    <flux:navlist.item icon="eye" :href="route('checker.tracking')"
+                        :current="request()->routeIs('checker.tracking')" wire:navigate>{{ __('Tracking') }}
                     </flux:navlist.item>
                 </flux:navlist.group>
             @endrole
@@ -170,6 +182,7 @@
     {{ $slot }}
 
     @fluxScripts
+    @stack('scripts')
 </body>
 
 </html>
