@@ -48,7 +48,7 @@
                         <td class="px-6 py-4">
                             <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
                                 @foreach ($user->roles as $role)
-                                    <li class="uppercase text-white">
+                                    <li class="uppercase">
                                         {{ $role->name }}
                                     </li>
                                 @endforeach

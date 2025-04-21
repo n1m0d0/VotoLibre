@@ -40,7 +40,7 @@
                         <td class="px-6 py-4">
                             <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
                                 @foreach ($user->enclosures as $enclosure)
-                                    <li class="uppercase text-white">
+                                    <li class="uppercase">
                                         {{ $enclosure->name }} <a
                                             wire:click='showDelete({{ $user->id }} , {{ $enclosure->id }})'
                                             class="font-medium capitalize text-red-600 dark:text-red-500 hover:underline cursor-pointer">
