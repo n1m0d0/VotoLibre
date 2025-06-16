@@ -68,6 +68,8 @@ class ComponentZone extends Component
             $zone = Zone::findOrFail($id);
             $this->form->setZone($zone);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('zone-form')->show();

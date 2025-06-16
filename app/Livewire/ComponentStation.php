@@ -68,6 +68,8 @@ class ComponentStation extends Component
             $station = Station::findOrFail($id);
             $this->form->setStation($station);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('station-form')->show();

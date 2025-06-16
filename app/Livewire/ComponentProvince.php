@@ -68,6 +68,8 @@ class ComponentProvince extends Component
             $province = Province::findOrFail($id);
             $this->form->setProvince($province);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('province-form')->show();

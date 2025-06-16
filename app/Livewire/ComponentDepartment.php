@@ -60,6 +60,8 @@ class ComponentDepartment extends Component
             $department = Department::findOrFail($id);
             $this->form->setDepartment($department);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('department-form')->show();

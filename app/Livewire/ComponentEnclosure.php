@@ -68,6 +68,8 @@ class ComponentEnclosure extends Component
             $enclosure = Enclosure::findOrFail($id);
             $this->form->setEnclosure($enclosure);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('enclosure-form')->show();

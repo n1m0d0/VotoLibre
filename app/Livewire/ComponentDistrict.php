@@ -68,6 +68,8 @@ class ComponentDistrict extends Component
             $district = District::findOrFail($id);
             $this->form->setDistrict($district);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('district-form')->show();

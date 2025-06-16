@@ -60,6 +60,8 @@ class ComponentParty extends Component
             $party = Party::findOrFail($id);
             $this->form->setParty($party);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('party-form')->show();

@@ -68,6 +68,8 @@ class ComponentUser extends Component
             $user = User::findOrFail($id);
             $this->form->setUser($user);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('user-form')->show();

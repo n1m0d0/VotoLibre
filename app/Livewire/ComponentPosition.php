@@ -60,6 +60,8 @@ class ComponentPosition extends Component
             $position = Position::findOrFail($id);
             $this->form->setPosition($position);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('position-form')->show();

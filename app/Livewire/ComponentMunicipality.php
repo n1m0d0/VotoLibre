@@ -68,6 +68,8 @@ class ComponentMunicipality extends Component
             $municipality = Municipality::findOrFail($id);
             $this->form->setMunicipality($municipality);
             $this->activity = "edit";
+        } else {
+            $this->activity = "create";
         }
 
         Flux::modal('municipality-form')->show();
