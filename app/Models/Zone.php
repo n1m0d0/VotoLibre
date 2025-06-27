@@ -13,7 +13,6 @@ class Zone extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'district_id',
         'name',
     ];
 
@@ -23,11 +22,6 @@ class Zone extends Model
             get: fn($value) => ucwords($value),
             set: fn($value) => strtolower($value)
         );
-    }
-
-    public function district(): BelongsTo
-    {
-        return $this->belongsTo(District::class);
     }
 
     public function enclosures(): HasMany

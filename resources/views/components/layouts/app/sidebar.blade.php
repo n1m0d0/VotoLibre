@@ -33,18 +33,6 @@
                     <flux:navlist.item icon="user" :href="route('admin.user')"
                         :current="request()->routeIs('admin.user')" wire:navigate>{{ __('Users') }}
                     </flux:navlist.item>
-                    <flux:navlist.item icon="globe-alt" :href="route('admin.department')"
-                        :current="request()->routeIs('admin.department')" wire:navigate>{{ __('Departments') }}
-                    </flux:navlist.item>
-                    <flux:navlist.item icon="globe-americas" :href="route('admin.province')"
-                        :current="request()->routeIs('admin.province')" wire:navigate>{{ __('Provinces') }}
-                    </flux:navlist.item>
-                    <flux:navlist.item icon="globe-asia-australia" :href="route('admin.municipality')"
-                        :current="request()->routeIs('admin.municipality')" wire:navigate>{{ __('Municipalities') }}
-                    </flux:navlist.item>
-                    <flux:navlist.item icon="globe-europe-africa" :href="route('admin.district')"
-                        :current="request()->routeIs('admin.district')" wire:navigate>{{ __('Districts') }}
-                    </flux:navlist.item>
                     <flux:navlist.item icon="map" :href="route('admin.zone')"
                         :current="request()->routeIs('admin.zone')" wire:navigate>{{ __('Zones') }}
                     </flux:navlist.item>

@@ -12,7 +12,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ComponentReport extends Component
 {
-    public $districts;
     public $zones;
     public $enclosures;
     public $supervisors;
@@ -21,7 +20,6 @@ class ComponentReport extends Component
 
     public function mount()
     {
-        $this->districts = District::select('id', 'name')->get();
         $this->zones = Zone::select('id', 'name')->get();
         $this->enclosures = Enclosure::select('id', 'name')->get();
         $this->supervisors = User::select('id', 'name')->role('supervisor')->get();

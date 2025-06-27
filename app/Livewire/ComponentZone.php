@@ -18,14 +18,7 @@ class ComponentZone extends Component
     public $activity = 'create';
     public $search = '';
 
-    public $districts;
-
     public ZoneForm $form;
-
-    public function mount()
-    {
-        $this->districts = District::select('id', 'name')->get();
-    }
 
     public function render()
     {

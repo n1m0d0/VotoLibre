@@ -25,9 +25,6 @@
                         {{ __('Name') }}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        {{ __('District') }}
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         {{ __('Options') }}
                     </th>
                 </tr>
@@ -39,9 +36,6 @@
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $zone->name }}
                         </th>
-                        <td class="px-6 py-4">
-                            {{ $zone->district->name }}
-                        </td>
                         <td class="px-6 py-4">
                             <ul>
                                 <li>
@@ -78,17 +72,6 @@
                     <flux:heading size="lg">{{ __('Edit zone') }}</flux:heading>
                 @endif
             </div>
-
-            <flux:label>{{ __('District') }}</flux:label>
-
-            <flux:select class="mt-2" wire:model="form.district">
-                <flux:select.option value="">{{ __('Select a district') }}</flux:select.option>
-                @foreach ($districts as $district)
-                    <flux:select.option value="{{ $district->id }}">{{ $district->name }}</flux:select.option>
-                @endforeach
-            </flux:select>
-
-            <flux:error name="form.district" />
 
             <flux:input wire:model='form.name' label="{{ __('Name') }}"
                 placeholder="{{ __('Example') }}: John Doe" />

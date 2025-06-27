@@ -10,12 +10,10 @@ class ZoneForm extends Form
     public ?Zone $zone = null;
 
     public $name;
-    public $district;
 
     public function rules()
     {
         return [
-            'district' => 'required|exists:districts,id',
             'name' => 'required|string|max:150',
         ];
     }
@@ -23,7 +21,6 @@ class ZoneForm extends Form
     public function setZone(Zone $zone)
     {
         $this->zone = $zone;
-        $this->district = $zone->district_id;
         $this->name = $zone->name;
     }
 
@@ -62,7 +59,6 @@ class ZoneForm extends Form
     private function collectData()
     {
         return [
-            'district_id' => $this->district,
             'name' => $this->name,
         ];
     }

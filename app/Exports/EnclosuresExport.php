@@ -22,7 +22,6 @@ class EnclosuresExport implements FromCollection, WithHeadings, WithStyles, Shou
             ->get()
             ->map(function ($enclosure) {
                 return [
-                    'district_name' => $enclosure->zone->district->name,
                     'zone_name' => $enclosure->zone->name,
                     'enclosure_name' => $enclosure->name,
                 ];
@@ -33,7 +32,6 @@ class EnclosuresExport implements FromCollection, WithHeadings, WithStyles, Shou
     public function headings(): array
     {
         return [
-            'Distrito',
             'Zona',
             'Recinto',
         ];
